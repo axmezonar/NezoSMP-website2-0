@@ -7,8 +7,8 @@
   <!-- Primary Meta Tags -->
   <title>NezoSMP — Fabric 26.3 Java Minecraft SMP</title>
   <meta name="title" content="NezoSMP — Fabric 26.3 Java Minecraft SMP">
-  <meta name="description" content="Official website for NezoSMP. Built exclusively for Minecraft Java Edition on Fabric 26.3. Features 3D proximity voice chat, grief prevention, diamond economy, and 20.0 TPS.">
-  <meta name="theme-color" content="#06080d">
+  <meta name="description" content="Official portal for NezoSMP. Minecraft Java Edition on Fabric 26.3 with 3D proximity voice chat, grief prevention, and pure vanilla+ survival.">
+  <meta name="theme-color" content="#06080e">
 
   <!-- Open Graph / Discord Embeds -->
   <meta property="og:type" content="website">
@@ -23,34 +23,57 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Stylesheet (Cache-Busted) -->
+  <link rel="stylesheet" href="assets/css/style.css?v=3.0">
 </head>
 <body>
 
-  <!-- Ambient Canvas & Background Lighting -->
+  <!-- Ambient Glowing Orbs & Background Particle Canvas -->
   <div class="ambient-orb ambient-orb-1"></div>
   <div class="ambient-orb ambient-orb-2"></div>
-  <div class="ambient-orb ambient-orb-3"></div>
   <canvas id="particle-canvas"></canvas>
 
   <!-- ==========================================================================
-       Top Header (Ultra Clean & Clutter-Free)
+       UNIFIED MASTER NAVBAR (Brand + Center Tab Controller + Action Buttons)
        ========================================================================== -->
-  <header class="site-header">
-    <div class="container navbar">
-      <!-- Brand Crest -->
-      <a href="#overview" class="brand" data-switch-tab="overview">
-        <img src="assets/images/logo.jpg" alt="NezoSMP Crest" class="brand-crest">
-        <div class="brand-details">
-          <span class="brand-title">NezoSMP</span>
-          <span class="brand-edition"><i class="fa-solid fa-cube"></i> Java Fabric 26.3</span>
+  <header class="master-header">
+    <div class="container master-nav-row">
+      <!-- Brand -->
+      <a href="#overview" class="nav-brand" data-switch-tab="overview" aria-label="NezoSMP Home">
+        <img src="assets/images/logo.jpg" alt="NezoSMP Crest" class="brand-crest-img" width="44" height="44" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; max-width: 44px; max-height: 44px; border-radius: 12px; object-fit: cover;">
+        <div class="brand-title-wrap">
+          <span class="brand-title-text">NezoSMP</span>
+          <span class="brand-edition-tag"><i class="fa-solid fa-cube"></i> Java Fabric 26.3</span>
         </div>
       </a>
 
-      <!-- Quick Action Buttons (No cluttered text menu) -->
-      <div class="header-actions">
-        <button class="btn btn-copy-header" data-copy-ip title="Click to copy server IP">
+      <!-- Actual Tabbed Navigation System -->
+      <nav class="portal-tabs-cluster" aria-label="Portal Navigation Tabs">
+        <button class="portal-nav-btn active" data-tab="overview">
+          <i class="fa-solid fa-compass"></i>
+          <span>Overview</span>
+        </button>
+        <button class="portal-nav-btn" data-tab="join">
+          <i class="fa-solid fa-play"></i>
+          <span>How to Join</span>
+        </button>
+        <button class="portal-nav-btn" data-tab="mods">
+          <i class="fa-solid fa-microchip"></i>
+          <span>Fabric Mods</span>
+        </button>
+        <button class="portal-nav-btn" data-tab="rules">
+          <i class="fa-solid fa-scroll"></i>
+          <span>Rules</span>
+        </button>
+        <button class="portal-nav-btn" data-tab="community">
+          <i class="fa-solid fa-users"></i>
+          <span>Community</span>
+        </button>
+      </nav>
+
+      <!-- Quick Action Buttons -->
+      <div class="nav-actions-cluster">
+        <button class="btn btn-copy-nav" data-copy-ip title="Click to copy server IP">
           <i class="fa-solid fa-copy"></i>
           <span>nezosmp.mcsh.gg</span>
         </button>
@@ -63,39 +86,13 @@
   </header>
 
   <!-- ==========================================================================
-       ACTUAL TABS CONTROLLER (Advanced Tabbed Navigation)
+       MAIN PORTAL CONTENT (TABBED VIEWS)
        ========================================================================== -->
-  <div class="portal-tabs-wrapper">
-    <div class="container">
-      <nav class="portal-tabs-nav" aria-label="Portal View Switcher">
-        <button class="portal-tab-btn active" data-tab="overview">
-          <i class="fa-solid fa-compass"></i>
-          <span>Overview</span>
-        </button>
-        <button class="portal-tab-btn" data-tab="join">
-          <i class="fa-solid fa-play"></i>
-          <span>How to Join</span>
-        </button>
-        <button class="portal-tab-btn" data-tab="mods">
-          <i class="fa-solid fa-microchip"></i>
-          <span>Fabric Mods</span>
-        </button>
-        <button class="portal-tab-btn" data-tab="rules">
-          <i class="fa-solid fa-scroll"></i>
-          <span>Rules</span>
-        </button>
-        <button class="portal-tab-btn" data-tab="community">
-          <i class="fa-solid fa-users"></i>
-          <span>Community</span>
-        </button>
-      </nav>
-    </div>
-  </div>
+  <main class="container main-portal-content">
 
-  <!-- ==========================================================================
-       TAB 1: REALM OVERVIEW
-       ========================================================================== -->
-  <main class="container">
+    <!-- ======================================================================
+         TAB 1: REALM OVERVIEW
+         ====================================================================== -->
     <div class="tab-pane active" id="tab-overview">
       
       <!-- Hero Realm Card -->
@@ -110,7 +107,7 @@
           </div>
 
           <h1 class="hero-hub-title">
-            The Next Generation of <span class="gradient-title-accent">Fabric SMP</span>
+            The Ultimate <span class="gradient-title-accent">Fabric SMP</span> Experience
           </h1>
 
           <p class="hero-hub-subtitle">
@@ -121,7 +118,7 @@
           <div class="master-server-card">
             <div class="server-address-bar">
               <div class="server-address-info">
-                <i class="fa-solid fa-server" style="color: var(--amethyst-primary); font-size: 1.3rem;"></i>
+                <i class="fa-solid fa-server" style="color: var(--amethyst); font-size: 1.3rem;"></i>
                 <div>
                   <div class="server-address-text" id="master-server-ip">nezosmp.mcsh.gg</div>
                 </div>
@@ -138,7 +135,7 @@
               <div class="telemetry-status">
                 <span class="status-beacon" id="status-beacon"></span>
                 <span id="status-label">Checking Status...</span>
-                <span style="color: var(--emerald-primary); font-family: var(--font-mono); margin-left: 0.25rem;" id="player-count">-- / 20 Online</span>
+                <span style="color: var(--emerald); font-family: var(--font-mono); margin-left: 0.25rem;" id="player-count">-- / 20 Online</span>
               </div>
               <div class="telemetry-chips">
                 <span class="telemetry-chip"><i class="fa-solid fa-code-fork"></i> Fabric 26.3</span>
@@ -174,7 +171,7 @@
       <!-- Quick Highlights Bar -->
       <div class="highlights-grid">
         <div class="highlight-box">
-          <div class="highlight-icon" style="color: var(--emerald-primary); background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.25);">
+          <div class="highlight-icon" style="color: var(--emerald); background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.25);">
             <i class="fa-solid fa-gauge-high"></i>
           </div>
           <div>
@@ -194,7 +191,7 @@
         </div>
 
         <div class="highlight-box">
-          <div class="highlight-icon" style="color: var(--cyan-primary); background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.25);">
+          <div class="highlight-icon" style="color: var(--cyan); background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.25);">
             <i class="fa-solid fa-shield-halved"></i>
           </div>
           <div>
@@ -204,7 +201,7 @@
         </div>
 
         <div class="highlight-box">
-          <div class="highlight-icon" style="color: var(--amber-primary); background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.25);">
+          <div class="highlight-icon" style="color: var(--amber); background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.25);">
             <i class="fa-solid fa-gem"></i>
           </div>
           <div>
@@ -235,7 +232,7 @@
 
         <div class="feature-card">
           <div class="feature-top">
-            <div class="feature-icon" style="color: var(--emerald-primary); background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3);"><i class="fa-solid fa-microphone-lines"></i></div>
+            <div class="feature-icon" style="color: var(--emerald); background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3);"><i class="fa-solid fa-microphone-lines"></i></div>
             <span class="feature-tag">Immersion</span>
           </div>
           <h3 class="feature-title">Proximity Voice Chat</h3>
@@ -244,7 +241,7 @@
 
         <div class="feature-card">
           <div class="feature-top">
-            <div class="feature-icon" style="color: var(--cyan-primary); background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3);"><i class="fa-solid fa-shield-heart"></i></div>
+            <div class="feature-icon" style="color: var(--cyan); background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3);"><i class="fa-solid fa-shield-heart"></i></div>
             <span class="feature-tag">Security</span>
           </div>
           <h3 class="feature-title">CoreProtect & Rollbacks</h3>
@@ -253,7 +250,7 @@
 
         <div class="feature-card">
           <div class="feature-top">
-            <div class="feature-icon" style="color: var(--amber-primary); background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3);"><i class="fa-solid fa-store"></i></div>
+            <div class="feature-icon" style="color: var(--amber); background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3);"><i class="fa-solid fa-store"></i></div>
             <span class="feature-tag">Economy</span>
           </div>
           <h3 class="feature-title">Diamond-Standard Shops</h3>
@@ -281,8 +278,8 @@
 
       <!-- Server Specs Telemetry Box -->
       <div class="server-specs-box">
-        <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 1.5rem; color: #ffffff;">
-          <i class="fa-solid fa-sliders" style="color: var(--amethyst-primary); margin-right: 0.5rem;"></i> Server Specifications & Settings
+        <h3 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 1.25rem; color: #ffffff;">
+          <i class="fa-solid fa-sliders" style="color: var(--amethyst); margin-right: 0.5rem;"></i> Server Specifications & Settings
         </h3>
         <div class="specs-grid">
           <div class="spec-item">
@@ -314,9 +311,9 @@
 
     </div>
 
-    <!-- ==========================================================================
+    <!-- ======================================================================
          TAB 2: HOW TO JOIN (JAVA EDITION ONLY)
-         ========================================================================== -->
+         ====================================================================== -->
     <div class="tab-pane" id="tab-join">
       <div class="section-head">
         <span class="section-badge-tag">Connection Guide</span>
@@ -395,7 +392,7 @@
               <span class="flow-step-index">01</span>
               <div class="flow-step-icon"><i class="fa-solid fa-download"></i></div>
               <h4 class="flow-step-title">Install Fabric Loader</h4>
-              <p class="flow-step-desc">Download and run the installer from <a href="https://fabricmc.net" target="_blank" style="color: var(--amethyst-primary); text-decoration: underline;">fabricmc.net</a> for version 26.3.</p>
+              <p class="flow-step-desc">Download and run the installer from <a href="https://fabricmc.net" target="_blank" style="color: var(--amethyst); text-decoration: underline;">fabricmc.net</a> for version 26.3.</p>
             </div>
             <div class="flow-step-card">
               <span class="flow-step-index">02</span>
@@ -437,9 +434,9 @@
       </div>
     </div>
 
-    <!-- ==========================================================================
+    <!-- ======================================================================
          TAB 3: FABRIC 26.3 MODS
-         ========================================================================== -->
+         ====================================================================== -->
     <div class="tab-pane" id="tab-mods">
       <div class="section-head">
         <span class="section-badge-tag">Client Enhancements</span>
@@ -455,14 +452,14 @@
           <div>
             <div class="mod-item-header">
               <h3 class="mod-item-title">Simple Voice Chat</h3>
-              <span class="mod-badge-pill" style="color: var(--emerald-primary); border-color: rgba(16, 185, 129, 0.35); background: rgba(16, 185, 129, 0.15);">Voice Chat</span>
+              <span class="mod-badge-pill" style="color: var(--emerald); border-color: rgba(16, 185, 129, 0.35); background: rgba(16, 185, 129, 0.15);">Voice Chat</span>
             </div>
             <p class="mod-item-desc">
               Adds positional 3D audio chat to Minecraft. Talk naturally with other players as you draw closer. Press 'V' in-game to configure your microphone.
             </p>
           </div>
           <div class="mod-item-footer">
-            <span style="color: var(--emerald-primary); font-weight: 700;"><i class="fa-solid fa-check"></i> Highly Recommended</span>
+            <span style="color: var(--emerald); font-weight: 700;"><i class="fa-solid fa-check"></i> Highly Recommended</span>
             <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
@@ -479,7 +476,7 @@
             </p>
           </div>
           <div class="mod-item-footer">
-            <span style="color: var(--emerald-primary); font-weight: 700;"><i class="fa-solid fa-check"></i> Recommended</span>
+            <span style="color: var(--emerald); font-weight: 700;"><i class="fa-solid fa-check"></i> Recommended</span>
             <a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
@@ -489,14 +486,14 @@
           <div>
             <div class="mod-item-header">
               <h3 class="mod-item-title">Iris Shaders</h3>
-              <span class="mod-badge-pill" style="color: var(--amethyst-primary); border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.15);">Visuals</span>
+              <span class="mod-badge-pill" style="color: var(--amethyst); border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.15);">Visuals</span>
             </div>
             <p class="mod-item-desc">
               Enjoy stunning shaderpacks with near-zero FPS drop alongside Sodium. Experience photorealistic water, dynamic lighting, and soft shadows.
             </p>
           </div>
           <div class="mod-item-footer">
-            <span style="color: var(--amethyst-primary); font-weight: 700;"><i class="fa-solid fa-sparkles"></i> Optional</span>
+            <span style="color: var(--amethyst); font-weight: 700;"><i class="fa-solid fa-sparkles"></i> Optional</span>
             <a href="https://modrinth.com/mod/iris" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
@@ -513,7 +510,7 @@
             </p>
           </div>
           <div class="mod-item-footer">
-            <span style="color: var(--emerald-primary); font-weight: 700;"><i class="fa-solid fa-check"></i> Recommended</span>
+            <span style="color: var(--emerald); font-weight: 700;"><i class="fa-solid fa-check"></i> Recommended</span>
             <a href="https://modrinth.com/mod/lithium" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
@@ -530,7 +527,7 @@
             </p>
           </div>
           <div class="mod-item-footer">
-            <span style="color: var(--text-secondary); font-weight: 600;"><i class="fa-solid fa-info-circle"></i> Optional</span>
+            <span style="color: var(--text-muted); font-weight: 600;"><i class="fa-solid fa-info-circle"></i> Optional</span>
             <a href="https://modrinth.com/mod/appleskin" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
@@ -547,14 +544,14 @@
             </p>
           </div>
           <div class="mod-item-footer">
-            <span style="color: var(--text-secondary); font-weight: 600;"><i class="fa-solid fa-shield"></i> Fair-Play Allowed</span>
+            <span style="color: var(--text-muted); font-weight: 600;"><i class="fa-solid fa-shield"></i> Fair-Play Allowed</span>
             <a href="https://modrinth.com/mod/xaeros-minimap" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
 
       <!-- One-click Modpack CTA -->
-      <div style="text-align: center; margin-top: 2rem;">
+      <div style="text-align: center; margin-top: 1.5rem;">
         <a href="https://modrinth.com/modpack/nezosmp" target="_blank" rel="noopener noreferrer" class="btn btn-amethyst btn-lg shimmer">
           <i class="fa-solid fa-box-open"></i>
           <span>Download NezoSMP Modpack (.mrpack) on Modrinth</span>
@@ -562,9 +559,9 @@
       </div>
     </div>
 
-    <!-- ==========================================================================
+    <!-- ======================================================================
          TAB 4: RULES & CONDUCT
-         ========================================================================== -->
+         ====================================================================== -->
     <div class="tab-pane" id="tab-rules">
       <div class="section-head">
         <span class="section-badge-tag">Server Code of Conduct</span>
@@ -668,9 +665,9 @@
       </div>
     </div>
 
-    <!-- ==========================================================================
+    <!-- ======================================================================
          TAB 5: COMMUNITY & STAFF
-         ========================================================================== -->
+         ====================================================================== -->
     <div class="tab-pane" id="tab-community">
       <div class="section-head">
         <span class="section-badge-tag">Player Showcase</span>
@@ -681,7 +678,7 @@
       </div>
 
       <!-- Staff Roster -->
-      <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: #ffffff; text-align: center; margin-bottom: 1.5rem;">
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #ffffff; text-align: center; margin-bottom: 1.5rem;">
         Server Leadership & Staff
       </h3>
       <div class="staff-cards-grid">
@@ -727,7 +724,7 @@
       </div>
 
       <!-- Screenshot Gallery -->
-      <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: #ffffff; text-align: center; margin-bottom: 1.5rem;">
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #ffffff; text-align: center; margin-bottom: 1.5rem;">
         World Screenshots (Click to View)
       </h3>
       <div class="gallery-cards-grid">
@@ -776,7 +773,7 @@
       </div>
 
       <!-- FAQ Section -->
-      <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: #ffffff; text-align: center; margin-bottom: 1.5rem;">
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #ffffff; text-align: center; margin-bottom: 1.5rem;">
         Frequently Asked Questions
       </h3>
       <div class="faq-wrap-box">
@@ -837,17 +834,17 @@
   </main>
 
   <!-- ==========================================================================
-       Portal Footer
+       PORTAL FOOTER
        ========================================================================== -->
   <footer class="portal-footer">
     <div class="container">
       <div class="footer-inner-grid">
         <div>
-          <a href="#overview" class="brand" data-switch-tab="overview">
-            <img src="assets/images/logo.jpg" alt="NezoSMP Logo" class="brand-crest">
-            <div class="brand-details">
-              <span class="brand-title">NezoSMP</span>
-              <span class="brand-edition">Fabric 26.3 • Java Edition</span>
+          <a href="#overview" class="nav-brand" data-switch-tab="overview">
+            <img src="assets/images/logo.jpg" alt="NezoSMP Logo" class="brand-crest-img" width="44" height="44" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; max-width: 44px; max-height: 44px; border-radius: 12px; object-fit: cover;">
+            <div class="brand-title-wrap">
+              <span class="brand-title-text">NezoSMP</span>
+              <span class="brand-edition-tag">Fabric 26.3 • Java Edition</span>
             </div>
           </a>
           <p class="footer-copy-sub">
@@ -903,8 +900,8 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/main.js"></script>
+  <!-- Scripts (Cache-Busted) -->
+  <script src="assets/js/config.js?v=3.0"></script>
+  <script src="assets/js/main.js?v=3.0"></script>
 </body>
 </html>
