@@ -238,6 +238,8 @@ img {
   border-radius: var(--radius-pill);
   padding: 0.35rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 10;
 }
 
 .portal-nav-btn {
@@ -255,6 +257,13 @@ img {
   cursor: pointer;
   transition: all var(--ease-fast);
   white-space: nowrap;
+  position: relative;
+  z-index: 10;
+  user-select: none;
+}
+
+.portal-nav-btn * {
+  pointer-events: none;
 }
 
 .portal-nav-btn:hover {
@@ -906,6 +915,11 @@ img {
   border: 1px solid var(--border-subtle);
   cursor: pointer;
   transition: var(--ease-fast);
+  user-select: none;
+}
+
+.launcher-choice-btn * {
+  pointer-events: none;
 }
 
 .launcher-choice-btn:hover {
