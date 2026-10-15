@@ -17,65 +17,67 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. Portal Tabs System (Actual Tabs, Zero Full-Page Scrolling)
+   1. Portal Tabs System (Actual Tabs, Instant View Switch)
    ========================================================================== */
 function initPortalTabs() {
-  const tabButtons = document.querySelectorAll('.portal-tab-btn');
+  const tabButtons = document.querySelectorAll('[data-tab]');
   const tabPanes = document.querySelectorAll('.tab-pane');
   const quickJumpButtons = document.querySelectorAll('[data-switch-tab]');
 
   function switchTab(tabId, pushHash = true) {
     if (!tabId) tabId = 'overview';
-    // Clean tab ID
-    tabId = tabId.replace('#', '');
+    tabId = tabId.replace('#', '').trim();
 
     const targetPane = document.getElementById(`tab-${tabId}`);
-    const targetBtn = document.querySelector(`.portal-tab-btn[data-tab="${tabId}"]`);
+    if (!targetPane) {
+      console.warn(`Tab pane #tab-${tabId} not found`);
+      return;
+    }
 
-    if (!targetPane) return;
-
-    // Remove active state from all
-    tabButtons.forEach(btn => btn.classList.remove('active'));
+    // Remove active class from all panes and buttons
     tabPanes.forEach(pane => pane.classList.remove('active'));
+    tabButtons.forEach(btn => btn.classList.remove('active'));
 
-    // Activate target
+    // Activate the target pane
     targetPane.classList.add('active');
-    if (targetBtn) targetBtn.classList.add('active');
 
-    // Update URL hash without jumping
+    // Activate all buttons pointing to this tab
+    document.querySelectorAll(`[data-tab="${tabId}"]`).forEach(btn => {
+      btn.classList.add('active');
+    });
+
+    // Update URL hash without causing a page jump
     if (pushHash && history.pushState) {
       history.pushState(null, null, `#${tabId}`);
     }
 
-    // Gentle scroll to top of tab area
-    const portalNav = document.querySelector('.portal-tabs-wrapper');
-    if (portalNav && window.scrollY > 200) {
-      portalNav.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Smooth scroll to top of content
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     playUiClickSound();
   }
 
-  // Bind top tab button clicks
+  // Bind all buttons with [data-tab]
   tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const tabId = btn.getAttribute('data-tab');
-      switchTab(tabId);
+      switchTab(tabId, true);
     });
   });
 
-  // Bind quick-switch links (e.g. from Hero buttons or footer links)
+  // Bind all quick-switch buttons (e.g. from Hero or Footer)
   quickJumpButtons.forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       const tabId = el.getAttribute('data-switch-tab');
-      switchTab(tabId);
+      switchTab(tabId, true);
     });
   });
 
-  // Handle browser back/forward or initial URL hash
+  // Handle URL hash on page load and back/forward navigation
   function handleHash() {
-    const hash = window.location.hash.replace('#', '');
+    const hash = (window.location.hash || '').replace('#', '').trim();
     if (hash && document.getElementById(`tab-${hash}`)) {
       switchTab(hash, false);
     } else {
@@ -84,6 +86,7 @@ function initPortalTabs() {
   }
 
   window.addEventListener('popstate', handleHash);
+  window.addEventListener('hashchange', handleHash);
   handleHash();
 }
 
@@ -140,7 +143,6 @@ async function initServerStatus() {
 
       if (latencyBadge) latencyBadge.textContent = "24ms";
     } else {
-      // Attempt fallback to mcsrvstat.us
       trySecondaryApi(serverIp, cfg);
     }
   } catch (err) {
@@ -169,7 +171,6 @@ async function trySecondaryApi(serverIp, cfg) {
       }
       if (sleepNotice) sleepNotice.style.display = "none";
     } else {
-      // Default to auto-sleep ready
       if (statusBeacon) statusBeacon.className = 'status-beacon sleeping';
       if (statusLabel) statusLabel.textContent = "Ready (Auto-Wake)";
       if (playerCount) playerCount.textContent = "0 / 20 Online";
@@ -219,7 +220,6 @@ function initCopyIpHandlers() {
   });
 }
 
-// Gentle audio chime synthesizer
 function playCopyChime() {
   try {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -230,8 +230,8 @@ function playCopyChime() {
     const gain = ctx.createGain();
 
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
-    osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.15); // G5
+    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.15);
 
     gain.gain.setValueAtTime(0.08, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
@@ -269,24 +269,40 @@ function playUiClickSound() {
 }
 
 /* ==========================================================================
-   4. Launcher Setup Sub-Tabs (Java Edition Only)
+   4. Launcher Setup Sub-Tabs (Prism, Modrinth, CurseForge, Vanilla)
    ========================================================================== */
 function initLauncherSubTabs() {
-  const launcherBtns = document.querySelectorAll('.launcher-choice-btn');
+  const launcherBtns = document.querySelectorAll('[data-launcher]');
   const launcherPanels = document.querySelectorAll('.launcher-flow-panel');
 
+  function switchLauncher(launcherId) {
+    if (!launcherId) return;
+
+    // Toggle active on buttons
+    launcherBtns.forEach(b => {
+      if (b.getAttribute('data-launcher') === launcherId) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
+
+    // Toggle active on panels
+    launcherPanels.forEach(p => p.classList.remove('active'));
+
+    const panel = document.getElementById(`panel-${launcherId}`);
+    if (panel) {
+      panel.classList.add('active');
+    }
+
+    playUiClickSound();
+  }
+
   launcherBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const targetId = btn.getAttribute('data-launcher');
-
-      launcherBtns.forEach(b => b.classList.remove('active'));
-      launcherPanels.forEach(p => p.classList.remove('active'));
-
-      btn.classList.add('active');
-      const panel = document.getElementById(`panel-${targetId}`);
-      if (panel) panel.classList.add('active');
-
-      playUiClickSound();
+      switchLauncher(targetId);
     });
   });
 }
@@ -303,7 +319,6 @@ function initRulesAccordion() {
       const content = card.querySelector('.rule-card-content');
       const isActive = card.classList.contains('active');
 
-      // Close siblings
       document.querySelectorAll('.rule-accordion-card.active').forEach(activeCard => {
         if (activeCard !== card) {
           activeCard.classList.remove('active');
@@ -322,7 +337,6 @@ function initRulesAccordion() {
     });
   });
 
-  // Default open first rule
   const firstRule = document.querySelector('.rule-accordion-card');
   if (firstRule) {
     firstRule.classList.add('active');
@@ -444,9 +458,9 @@ function initParticleCanvas() {
   const particleCount = window.innerWidth < 768 ? 20 : 45;
   const particles = [];
   const colors = [
-    'rgba(168, 85, 247, 0.45)', // Amethyst
-    'rgba(16, 185, 129, 0.4)',  // Emerald
-    'rgba(6, 182, 212, 0.35)'   // Cyan
+    'rgba(168, 85, 247, 0.45)',
+    'rgba(16, 185, 129, 0.4)',
+    'rgba(6, 182, 212, 0.35)'
   ];
 
   for (let i = 0; i < particleCount; i++) {

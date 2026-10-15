@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Stylesheet (Cache-Busted) -->
-  <link rel="stylesheet" href="assets/css/style.css?v=3.0">
+  <link rel="stylesheet" href="assets/css/style.css?v=3.5">
 </head>
 <body>
 
@@ -326,8 +326,11 @@
       <div class="join-hub-box">
         <!-- Launcher Selector Buttons -->
         <div class="launcher-selector-bar">
-          <button class="launcher-choice-btn active" data-launcher="modrinth">
-            <i class="fa-solid fa-download"></i> Modrinth / Prism Launcher
+          <button class="launcher-choice-btn active" data-launcher="prism">
+            <i class="fa-solid fa-shapes"></i> Prism Launcher
+          </button>
+          <button class="launcher-choice-btn" data-launcher="modrinth">
+            <i class="fa-solid fa-cloud-arrow-down"></i> Modrinth App
           </button>
           <button class="launcher-choice-btn" data-launcher="curseforge">
             <i class="fa-solid fa-fire"></i> CurseForge App
@@ -337,31 +340,61 @@
           </button>
         </div>
 
-        <!-- Panel 1: Modrinth / Prism -->
-        <div class="launcher-flow-panel active" id="panel-modrinth">
+        <!-- Panel 1: Prism Launcher (Dedicated) -->
+        <div class="launcher-flow-panel active" id="panel-prism">
           <div class="flow-steps-grid">
             <div class="flow-step-card">
               <span class="flow-step-index">01</span>
-              <div class="flow-step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-              <h4 class="flow-step-title">Create Instance</h4>
-              <p class="flow-step-desc">Open Modrinth App or Prism Launcher. Click <strong>Add Instance</strong> or <strong>New Profile</strong>.</p>
+              <div class="flow-step-icon"><i class="fa-solid fa-plus"></i></div>
+              <h4 class="flow-step-title">Add Instance</h4>
+              <p class="flow-step-desc">Open Prism Launcher and click <strong>"Add Instance"</strong> (or press <code>Ctrl + N</code>). Set name to <strong>NezoSMP</strong>.</p>
             </div>
             <div class="flow-step-card">
               <span class="flow-step-index">02</span>
               <div class="flow-step-icon"><i class="fa-solid fa-code-fork"></i></div>
               <h4 class="flow-step-title">Select Fabric 26.3</h4>
-              <p class="flow-step-desc">Choose Minecraft Version <strong>26.3</strong> and Modloader <strong>Fabric</strong>. Add Simple Voice Chat and Sodium.</p>
+              <p class="flow-step-desc">Under Version, select Minecraft <strong>26.3</strong> and check <strong>Fabric</strong> (Fabric Loader 0.16+). Click OK to create.</p>
             </div>
             <div class="flow-step-card">
               <span class="flow-step-index">03</span>
+              <div class="flow-step-icon"><i class="fa-solid fa-download"></i></div>
+              <h4 class="flow-step-title">1-Click Mods Download</h4>
+              <p class="flow-step-desc">Right-click instance → <strong>Edit</strong> → <strong>Mods</strong> tab → click <strong>"Download Mods"</strong>. Search and check <strong>Simple Voice Chat</strong> & <strong>Sodium</strong>.</p>
+            </div>
+            <div class="flow-step-card">
+              <span class="flow-step-index">04</span>
               <div class="flow-step-icon"><i class="fa-solid fa-play"></i></div>
-              <h4 class="flow-step-title">Connect to IP</h4>
-              <p class="flow-step-desc">Launch Minecraft Java, go to Multiplayer, add <strong>nezosmp.mcsh.gg</strong> and connect!</p>
+              <h4 class="flow-step-title">Connect & Play</h4>
+              <p class="flow-step-desc">Launch the instance, go to Multiplayer, add server <strong>nezosmp.mcsh.gg</strong>, and enjoy!</p>
             </div>
           </div>
         </div>
 
-        <!-- Panel 2: CurseForge -->
+        <!-- Panel 2: Modrinth App -->
+        <div class="launcher-flow-panel" id="panel-modrinth">
+          <div class="flow-steps-grid">
+            <div class="flow-step-card">
+              <span class="flow-step-index">01</span>
+              <div class="flow-step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <h4 class="flow-step-title">Create Instance</h4>
+              <p class="flow-step-desc">Open Modrinth App, click the <strong>+</strong> icon to create a new profile. Name it <strong>NezoSMP</strong>.</p>
+            </div>
+            <div class="flow-step-card">
+              <span class="flow-step-index">02</span>
+              <div class="flow-step-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+              <h4 class="flow-step-title">Select Fabric 26.3</h4>
+              <p class="flow-step-desc">Select Minecraft <strong>26.3</strong> and Modloader <strong>Fabric</strong>. Click "Add Content" and install <strong>Simple Voice Chat</strong> & <strong>Sodium</strong>.</p>
+            </div>
+            <div class="flow-step-card">
+              <span class="flow-step-index">03</span>
+              <div class="flow-step-icon"><i class="fa-solid fa-plug"></i></div>
+              <h4 class="flow-step-title">Connect to IP</h4>
+              <p class="flow-step-desc">Launch Minecraft Java, go to Multiplayer, add <strong>nezosmp.mcsh.gg</strong>, and connect!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: CurseForge -->
         <div class="launcher-flow-panel" id="panel-curseforge">
           <div class="flow-steps-grid">
             <div class="flow-step-card">
@@ -385,7 +418,7 @@
           </div>
         </div>
 
-        <!-- Panel 3: Vanilla Launcher -->
+        <!-- Panel 4: Vanilla Launcher -->
         <div class="launcher-flow-panel" id="panel-vanilla">
           <div class="flow-steps-grid">
             <div class="flow-step-card">
@@ -901,7 +934,7 @@
   </div>
 
   <!-- Scripts (Cache-Busted) -->
-  <script src="assets/js/config.js?v=3.0"></script>
-  <script src="assets/js/main.js?v=3.0"></script>
+  <script src="assets/js/config.js?v=3.5"></script>
+  <script src="assets/js/main.js?v=3.5"></script>
 </body>
 </html>
