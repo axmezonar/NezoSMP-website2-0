@@ -1,20 +1,18 @@
-# 🎮 NezoSMP — Fabric 26.3 Official Website
+# 🎮 NezoSMP — Fabric 26.3 Official Website (Java Edition Only)
 
-A high-performance, responsive Minecraft SMP website built for **Cloudflare Pages**. Features an obsidian glassmorphic dark theme, glowing emerald & amethyst accents, real-time Minecraft server ping API, 1-click copy IP with synthesized audio feedback, interactive 3D map viewer, tabbed launcher guide, and searchable rules accordion.
+A state-of-the-art, interactive tabbed gaming portal for **NezoSMP** built for deployment on **Cloudflare Pages**. Features an obsidian glassmorphic dark theme, glowing emerald & amethyst accents, real-time Minecraft server status API with auto-sleep detection, 1-click copy IP with synthesized audio feedback, tabbed view controller, launcher guides, and searchable rules.
 
 ---
 
-## ⚡ Features
+## ⚡ Key Highlights
 
+- **Server IP**: `nezosmp.mcsh.gg` (Default Java Port 25565)
+- **Discord Community**: [https://discord.gg/epsQADhxss](https://discord.gg/epsQADhxss)
+- **Platform**: Strictly Minecraft Java Edition (Fabric 26.3)
+- **Architecture**: Advanced Tabbed Dashboard (Overview, How to Join, Fabric Mods, Rules, Community) with smooth transitions and zero endless scrolling.
+- **Auto-Sleep Aware**: Integrates with MCServerHost live status queries (`api.mcstatus.io`) notifying players that connecting wakes the server up automatically.
 - **Blazing Fast Cloudflare Pages Ready**: Zero build steps required. Ultra-fast global Edge CDN loading with custom `_headers` and `_redirects`.
-- **Live Server Status Query**: Automatic real-time status check via `api.mcsrvstat.us` displaying online player count, MOTD, and ping latency.
 - **1-Click IP Copy with Sound**: Smooth clipboard copy with Web Audio API chime and animated toast confirmation.
-- **Ambient Particle Canvas**: Lightweight, GPU-accelerated canvas background simulating floating spores and mystical embers.
-- **Interactive BlueMap / Dynmap Viewer**: Dimension switcher for Overworld, Nether, and The End with landmark coordinates.
-- **Tabbed "How to Join" Guide**: Dedicated instructions for Modrinth, Prism, CurseForge, Vanilla Launcher, and Bedrock Edition.
-- **Searchable Rules Accordion**: Instant real-time text filter for rules.
-- **Staff Team & Gallery**: Minecraft player skin renders and interactive lightbox zoom.
-- **Centralized Configuration**: All server details, IPs, links, and rules are configured in a single file: `assets/js/config.js`.
 
 ---
 
@@ -22,16 +20,16 @@ A high-performance, responsive Minecraft SMP website built for **Cloudflare Page
 
 ```text
 NezoSMP-website2-0/
-├── index.html              # Main semantic HTML structure
+├── index.html              # Main semantic HTML structure with tab panes
 ├── _headers                # Cloudflare Pages security & caching headers
-├── _redirects              # Vanity redirects (/discord, /map, /modpack)
+├── _redirects              # Vanity redirects (/discord, /modpack)
 ├── wrangler.toml           # Cloudflare Wrangler CLI configuration
 ├── assets/
 │   ├── css/
 │   │   └── style.css       # Obsidian glassmorphic design system
 │   ├── js/
 │   │   ├── config.js       # Central server configuration & data
-│   │   └── main.js         # Interactive engine, API query, audio, canvas
+│   │   └── main.js         # Tab controller, API status, audio, canvas
 │   └── images/
 │       ├── hero.jpg        # Cinematic landscape banner
 │       ├── community.jpg   # Player town & shopping district
@@ -42,21 +40,9 @@ NezoSMP-website2-0/
 
 ---
 
-## 🛠️ How to Customize Your Server Settings
+## 🛠️ Customization
 
-Open `assets/js/config.js` to modify server parameters without touching HTML:
-
-```javascript
-const SERVER_CONFIG = {
-  serverName: "NezoSMP",
-  serverIp: "play.nezosmp.net",       // Your server domain / IP
-  minecraftVersion: "Fabric 26.3",    // Version badge
-  discordUrl: "https://discord.gg/yourinvite",
-  liveMapUrl: "https://map.nezosmp.net",
-  modpackUrl: "https://modrinth.com/modpack/nezosmp",
-  ...
-};
-```
+Edit [`assets/js/config.js`](assets/js/config.js) to adjust server settings, staff members, or rules.
 
 ---
 
@@ -72,24 +58,12 @@ const SERVER_CONFIG = {
    - **Build output directory**: `.` *(Root folder)*
 5. Click **Save and Deploy**. Your website will be live worldwide in seconds at `yourproject.pages.dev`!
 
-### Option 2: Direct Upload (Drag and Drop)
+### Option 2: Direct Upload
 1. In Cloudflare Dashboard → **Workers & Pages** → **Create application** → **Pages** → **Upload assets**.
-2. Drag and drop this folder (`NezoSMP-website2-0`).
+2. Drag and drop this project folder.
 3. Deploy!
 
-### Option 3: Cloudflare Wrangler CLI
+### Option 3: Wrangler CLI
 ```bash
 npx wrangler pages deploy . --project-name=nezosmp-website
 ```
-
----
-
-## 💻 Local Testing
-
-You can preview the site locally using Python's built-in web server:
-
-```bash
-python3 -m http.server 8080
-```
-
-Then open `http://localhost:8080` in your browser.

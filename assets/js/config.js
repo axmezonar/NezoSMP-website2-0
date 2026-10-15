@@ -1,37 +1,33 @@
 /**
  * NezoSMP - Central Configuration
- * You can edit all server settings, links, and text directly in this file!
+ * Fabric 26.3 Java Edition SMP
  */
 
 const SERVER_CONFIG = {
   // Server Identity
   serverName: "NezoSMP",
-  tagline: "Fabric 26.3 • Premium Survival Multiplayer",
-  description: "A community-focused, hermitcraft-inspired Minecraft SMP built on modern Fabric 26.3 with high performance, proximity voice chat, grief prevention, and zero pay-to-win mechanics.",
+  tagline: "Fabric 26.3 • Java Edition Vanilla+ SMP",
+  description: "A community-focused, hermitcraft-inspired Minecraft SMP built strictly for Minecraft Java Edition on modern Fabric 26.3. Featuring proximity voice chat, grief prevention, diamond economy, and uncompromised performance.",
   
-  // Connection Details
-  serverIp: "play.nezosmp.net",
+  // Connection Details (Java Edition Only)
+  serverIp: "nezosmp.mcsh.gg",
   serverPort: 25565,
-  bedrockIp: "bedrock.nezosmp.net",
-  bedrockPort: 19132,
+  minecraftEdition: "Java Edition Only",
   minecraftVersion: "Fabric 26.3",
   recommendedLoader: "Fabric Loader 0.16+",
   
   // Community Links
-  discordUrl: "https://discord.gg/nezosmp",
-  liveMapUrl: "https://map.nezosmp.net",
+  discordUrl: "https://discord.gg/epsQADhxss",
   modpackUrl: "https://modrinth.com/modpack/nezosmp",
-  wikiUrl: "#rules",
-  storeUrl: "#", // Optional donation or cosmetic store
 
-  // Default fallback stats (used when offline or before API loads)
+  // Default fallback stats (used when server is waking up or before API loads)
   defaultStats: {
     online: true,
-    playersOnline: 48,
-    maxPlayers: 120,
-    motd: "§6§lNezoSMP §8» §aFabric 26.3 §7Vanilla+ SMP §f[VoiceChat | Grief-Free]",
+    playersOnline: 0,
+    maxPlayers: 20,
+    motd: "NezoSMP Fabric 26.3 • Java Edition Survival [Join to Wake Up]",
     version: "Fabric 26.3",
-    ping: "24ms"
+    ping: "28ms"
   },
 
   // Key SMP Features
@@ -40,13 +36,13 @@ const SERVER_CONFIG = {
       icon: "fa-bolt",
       badge: "Performance",
       title: "Optimized Fabric 26.3",
-      description: "Powered by Lithium, FerriteCore, and custom tick scheduling for a consistent 20.0 TPS even during massive farms and player gatherings."
+      description: "Powered by Lithium, FerriteCore, and server tick optimizations for consistent 20.0 TPS even during massive redstone farms and community builds."
     },
     {
       icon: "fa-microphone",
       badge: "Immersion",
       title: "Proximity Voice Chat",
-      description: "Seamless 3D directional voice audio with Simple Voice Chat mod. Chat naturally as you explore caves or build megabases together."
+      description: "Seamless 3D directional audio with Simple Voice Chat. Talk naturally with nearby players as you explore caves or build megabases together."
     },
     {
       icon: "fa-shield-halved",
@@ -55,73 +51,73 @@ const SERVER_CONFIG = {
       description: "Every block, chest, and entity interaction is logged. Staff can inspect and roll back any unauthorized action in seconds."
     },
     {
-      icon: "fa-map-location-dot",
-      badge: "Live Web",
-      title: "Real-Time 3D Live Map",
-      description: "Explore the entire Overworld, Nether, and End with high-definition web maps showing live player markers, claims, and landmarks."
-    },
-    {
       icon: "fa-coins",
       badge: "Economy",
       title: "Diamond-Standard Economy",
-      description: "Hermitcraft-inspired player-run shops at the central shopping district. No spawned items or overpowered crate keys."
+      description: "Hermitcraft-inspired player-run shops at the central shopping district. No spawned items, pay-to-win kits, or artificial currencies."
     },
     {
       icon: "fa-dungeon",
       badge: "Adventures",
-      title: "Trial Chambers & World Events",
-      description: "Explore newly generated 26.3 trial chambers, community boss challenges, seasonal dragon fights, and build contests."
+      title: "Trial Chambers & Events",
+      description: "Explore newly generated 26.3 trial chambers, tackle custom community boss events, dragon respawn battles, and build contests."
+    },
+    {
+      icon: "fa-compass",
+      badge: "Vanilla+",
+      title: "Pure Survival Gameplay",
+      description: "Strictly vanilla survival mechanics with carefully curated quality-of-life additions. No disruptive teleports or intrusive commands."
     }
   ],
 
-  // Recommended Client Mods
+  // Recommended Client Mods (Java Edition Fabric 26.3)
   recommendedMods: [
     {
       name: "Simple Voice Chat",
       category: "Voice Chat",
-      version: "26.3",
-      required: "Optional (Highly Recommended)",
-      desc: "Positional 3D voice chat in-game with customizable push-to-talk.",
+      version: "Fabric 26.3",
+      badge: "Essential",
+      desc: "Positional 3D voice chat in-game with customizable push-to-talk and whisper volume.",
       download: "https://modrinth.com/plugin/simple-voice-chat"
     },
     {
       name: "Sodium / Embeddium",
       category: "Performance",
-      version: "26.3",
-      required: "Recommended",
-      desc: "Modern rendering engine replacement that dramatically boosts framerates.",
+      version: "Fabric 26.3",
+      badge: "Recommended",
+      desc: "Modern rendering engine replacement that dramatically boosts FPS and eliminates micro-stutter.",
       download: "https://modrinth.com/mod/sodium"
     },
     {
       name: "Iris Shaders",
       category: "Visuals",
-      version: "26.3",
-      required: "Optional",
+      version: "Fabric 26.3",
+      badge: "Visuals",
       desc: "Stunning modern shaderpack compatibility with near-zero performance penalty.",
       download: "https://modrinth.com/mod/iris"
     },
     {
       name: "Lithium & FerriteCore",
       category: "Optimization",
-      version: "26.3",
-      required: "Recommended",
-      desc: "Client-side physics, chunk caching, and memory optimization.",
+      version: "Fabric 26.3",
+      badge: "Performance",
+      desc: "Client-side physics, chunk caching, and memory optimization to keep RAM usage low.",
       download: "https://modrinth.com/mod/lithium"
     },
     {
       name: "AppleSkin",
       category: "Quality of Life",
-      version: "26.3",
-      required: "Optional",
-      desc: "Displays food saturation and health regeneration visual indicators.",
+      version: "Fabric 26.3",
+      badge: "QoL",
+      desc: "Displays food saturation and health regeneration visual previews in your hotbar.",
       download: "https://modrinth.com/mod/appleskin"
     },
     {
-      name: "Xaero's World Map & Minimap",
+      name: "Xaero's Minimap (Fair-Play)",
       category: "Navigation",
-      version: "26.3",
-      required: "Fair-Play Mode",
-      desc: "Client-side waypoint and territory mapping conforming to server fairness rules.",
+      version: "Fabric 26.3",
+      badge: "Allowed",
+      desc: "Client-side waypoint and territory mapping conforming to server fair-play rules.",
       download: "https://modrinth.com/mod/xaeros-minimap"
     }
   ],
@@ -130,33 +126,33 @@ const SERVER_CONFIG = {
   rules: [
     {
       number: "01",
-      title: "No Griefing, Stealing, or Unauthorized Raiding",
-      details: "Respect other players' builds, chests, and farms. Even unlocked chests are protected. All block changes are logged with CoreProtect."
+      title: "No Griefing, Stealing, or Raiding",
+      details: "Respect other players' builds, chests, and farms. Even wilderness chests are protected. All block changes are logged with CoreProtect."
     },
     {
       number: "02",
       title: "Fair Play & Permitted Client Mods",
-      details: "Only quality-of-life and performance mods (Sodium, Iris, Voice Chat, Minimap without cave-view) are allowed. X-Ray, fly hacks, auto-clickers, and baritone are strictly prohibited."
+      details: "Only quality-of-life and performance mods (Sodium, Iris, Voice Chat, AppleSkin, fair-play Minimap) are allowed. X-Ray, hacked clients, baritone, and auto-clickers result in permanent bans."
     },
     {
       number: "03",
-      title: "Friendly & Mature Community",
-      details: "Toxicity, hate speech, harassment, spam, and unsolicited advertisements will result in immediate bans. Keep public chat welcoming to all players."
+      title: "Welcoming Community Standards",
+      details: "Toxicity, hate speech, harassment, spam, and unsolicited advertisements will result in immediate bans. Keep public chat respectful."
     },
     {
       number: "04",
-      title: "PvP Rules & Consent",
-      details: "PvP is strictly consensual unless inside designated PvP arenas or agreed war zones. No spawn-killing or trapping players in Nether portals."
+      title: "PvP by Mutual Consent Only",
+      details: "PvP is strictly consensual unless inside designated PvP tournament arenas. No spawn-camping or portal traps."
     },
     {
       number: "05",
-      title: "Server-Friendly Redstone & Farms",
-      details: "Huge mob farms and flying machines must have manual on/off shutoff switches. Continuous lag machines or unattended afk chunk loaders are restricted."
+      title: "Lag-Friendly Redstone & Farms",
+      details: "High-frequency farms and flying machines must have manual on/off shutoff switches. Continuous lag machines are prohibited."
     },
     {
       number: "06",
-      title: "Land Claiming & Safe Distance",
-      details: "Please do not build within 150 blocks of an existing player's base unless you have their explicit permission."
+      title: "Land Claiming & Spacing",
+      details: "Please do not build within 150 blocks of an existing player's base without their permission."
     }
   ],
 
@@ -167,21 +163,21 @@ const SERVER_CONFIG = {
       role: "Server Owner & Lead Dev",
       skin: "MHF_Steve",
       badge: "Owner",
-      quote: "Creating the coziest high-performance SMP world."
+      quote: "Creating the ultimate lag-free Fabric SMP experience."
     },
     {
       name: "Astraea",
       role: "Head Administrator",
       skin: "MHF_Alex",
       badge: "Admin",
-      quote: "Keeping the economy balanced and events running smoothly."
+      quote: "Keeping the community friendly and server operations smooth."
     },
     {
       name: "Kaelen",
       role: "Community Manager",
       skin: "notch",
       badge: "Community",
-      quote: "Always here in Discord and in-game to help new adventurers."
+      quote: "Organizing weekly community events and helping new adventurers."
     },
     {
       name: "RiftWalker",
@@ -195,29 +191,28 @@ const SERVER_CONFIG = {
   // FAQ Items
   faq: [
     {
-      question: "Is NezoSMP free to play and is there a whitelist?",
-      answer: "NezoSMP is 100% free to play! We have a quick, welcoming verification process on our Discord server to prevent bots and griefers. Once verified, you are automatically whitelisted."
+      question: "Is NezoSMP Java Edition only?",
+      answer: "Yes, NezoSMP is built strictly for Minecraft Java Edition (Fabric 26.3) to preserve pure vanilla redstone physics, optimal tick performance, and native Simple Voice Chat support."
     },
     {
-      question: "What Minecraft version is required?",
-      answer: "The server runs on Fabric 26.3. We support native 26.3 clients and recommend using the Fabric Loader with the Simple Voice Chat and Sodium mods for the best experience."
+      question: "What is the server IP and port?",
+      answer: "The server IP is nezosmp.mcsh.gg on default Java port 25565. No port is needed when connecting from the Minecraft Java multiplayer menu."
     },
     {
-      question: "Can Bedrock Edition (Console / Mobile / Windows 10) players join?",
-      answer: "Yes! Our server supports GeyserMC. Bedrock players can join using bedrock.nezosmp.net on port 19132."
+      question: "What if the server is asleep when I try to join?",
+      answer: "Our host uses an intelligent auto-sleep feature to conserve resources. Simply connect to nezosmp.mcsh.gg in your Minecraft client, and the server will instantly boot up in a few seconds!"
     },
     {
-      question: "Do I need to install any mods to connect?",
-      answer: "No client mods are strictly required to join—you can connect with a vanilla Minecraft client! However, we strongly recommend Simple Voice Chat for proximity audio and Sodium for max FPS."
+      question: "How do I use Proximity Voice Chat?",
+      answer: "Install the Simple Voice Chat Fabric mod on your client. Once you join the server, press 'V' to configure your microphone and sound settings."
     },
     {
-      question: "How does the economy work?",
-      answer: "We use a diamond-backed economy. Players set up their own custom shops in the central Shopping District at Spawn, selling resources, enchanted books, and custom builds."
+      question: "How do I get whitelisted or join?",
+      answer: "Join our official Discord at https://discord.gg/epsQADhxss and complete the quick player verification channel to link your Minecraft username."
     }
   ]
 };
 
-// Export to window
 if (typeof window !== "undefined") {
   window.SERVER_CONFIG = SERVER_CONFIG;
 }
