@@ -1,0 +1,4 @@
+# Cloudflare Pages Vanity Redirects
+/discord      https://discord.gg/nezosmp             302
+/map          https://map.nezosmp.net                302
+/modpack      https://modrinth.com/modpack/nezosmp   302

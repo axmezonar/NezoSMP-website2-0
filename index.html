@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>NezoSMP — Fabric 26.3 Minecraft Survival Multiplayer</title>
+  <meta name="title" content="NezoSMP — Fabric 26.3 Minecraft Survival Multiplayer">
+  <meta name="description" content="Join NezoSMP, the premier Fabric 26.3 Minecraft SMP. Featuring proximity voice chat, grief prevention, pure vanilla+ survival, diamond economy, and rock-solid 20.0 TPS.">
+  <meta name="keywords" content="Minecraft, SMP, Fabric 26.3, Minecraft Server, Survival Multiplayer, Proximity Voice Chat, NezoSMP, Cloudflare Pages">
+  <meta name="theme-color" content="#090b10">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nezosmp.pages.dev/">
+  <meta property="og:title" content="NezoSMP — Fabric 26.3 Minecraft Survival Multiplayer">
+  <meta property="og:description" content="Experience high-performance Fabric 26.3 SMP with 3D proximity voice chat, grief-free claiming, and a welcoming community.">
+  <meta property="og:image" content="assets/images/hero.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://nezosmp.pages.dev/">
+  <meta property="twitter:title" content="NezoSMP — Fabric 26.3 Minecraft Survival Multiplayer">
+  <meta property="twitter:description" content="Experience high-performance Fabric 26.3 SMP with 3D proximity voice chat, grief-free claiming, and a welcoming community.">
+  <meta property="twitter:image" content="assets/images/hero.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Background Glows & Particle Canvas -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="ambient-glow ambient-glow-3"></div>
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ==========================================================================
+       Header & Navbar
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="#hero" class="brand" aria-label="NezoSMP Home">
+        <img src="assets/images/logo.jpg" alt="NezoSMP Server Crest" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">NezoSMP</span>
+          <span class="brand-badge">Fabric 26.3</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#live-map" class="nav-link">Live Map</a></li>
+          <li><a href="#mods" class="nav-link">Fabric Mods</a></li>
+          <li><a href="#how-to-join" class="nav-link">How to Join</a></li>
+          <li><a href="#rules" class="nav-link">Rules</a></li>
+          <li><a href="#staff" class="nav-link">Staff</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Action Buttons -->
+      <div class="nav-actions">
+        <button class="btn btn-secondary btn-sm" data-copy-ip id="nav-copy-ip-btn" title="Click to copy server IP">
+          <i class="fa-solid fa-copy"></i>
+          <span>play.nezosmp.net</span>
+        </button>
+        <a href="https://discord.gg/nezosmp" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-sm">
+          <i class="fa-brands fa-discord"></i>
+          <span>Discord</span>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+      <a href="#about" class="nav-link mobile-nav-link">About NezoSMP</a>
+      <a href="#features" class="nav-link mobile-nav-link">Server Features</a>
+      <a href="#live-map" class="nav-link mobile-nav-link">Live 3D Map</a>
+      <a href="#mods" class="nav-link mobile-nav-link">Fabric Mods</a>
+      <a href="#how-to-join" class="nav-link mobile-nav-link">How to Join</a>
+      <a href="#rules" class="nav-link mobile-nav-link">Rules & Guidelines</a>
+      <a href="#staff" class="nav-link mobile-nav-link">Staff Team</a>
+      <a href="#gallery" class="nav-link mobile-nav-link">Screenshots</a>
+      <a href="#faq" class="nav-link mobile-nav-link">FAQ</a>
+      <button class="btn btn-primary" data-copy-ip style="margin-top: 1rem;">
+        <i class="fa-solid fa-copy"></i> Copy Server IP
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Hero Section
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <!-- Version & Status Pill -->
+      <div class="hero-badge-pill">
+        <span class="pill-dot"></span>
+        <span>Minecraft Fabric 26.3 • Season 3 Online</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="hero-title">
+        The Ultimate <span class="gradient-text">Fabric SMP</span> Experience
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle">
+        Immerse yourself in a pure Vanilla+ survival multiplayer world built on cutting-edge Fabric 26.3. Seamless proximity voice chat, grief-proof claims, player diamond economy, and rock-solid 20.0 TPS.
+      </p>
+
+      <!-- Server IP & Live Status Card -->
+      <div class="server-status-card">
+        <div class="server-ip-row">
+          <div class="server-ip-info">
+            <i class="fa-solid fa-cube server-ip-icon"></i>
+            <div>
+              <span class="server-ip-text" id="display-server-ip">play.nezosmp.net</span>
+              <span class="server-ip-tag">Java & Bedrock</span>
+            </div>
+          </div>
+          <button class="btn-copy-ip shimmer" data-copy-ip id="hero-copy-ip-btn" aria-label="Copy server IP">
+            <i class="fa-solid fa-copy"></i>
+            <span>Copy IP</span>
+          </button>
+        </div>
+
+        <div class="server-meta-row">
+          <div class="meta-status-indicator">
+            <span class="status-dot" id="status-dot"></span>
+            <span class="meta-status-text" id="status-text">Checking server...</span>
+            <span class="meta-player-count">(<span id="player-count">-- / --</span>)</span>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="meta-version-badge"><i class="fa-solid fa-code-fork"></i> Fabric 26.3</span>
+            <span class="meta-version-badge" id="server-ping"><i class="fa-solid fa-signal"></i> 24ms</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Call-To-Action Buttons -->
+      <div class="hero-cta-buttons">
+        <a href="#how-to-join" class="btn btn-primary btn-lg shimmer">
+          <i class="fa-solid fa-play"></i>
+          <span>How to Join</span>
+        </a>
+        <a href="#live-map" class="btn btn-secondary btn-lg">
+          <i class="fa-solid fa-map"></i>
+          <span>View 3D Live Map</span>
+        </a>
+        <a href="https://discord.gg/nezosmp" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-lg">
+          <i class="fa-brands fa-discord"></i>
+          <span>Join Discord</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Quick Highlights Ribbon
+       ========================================================================== -->
+  <div class="container quick-stats-bar" id="about">
+    <div class="quick-stats-grid">
+      <div class="quick-stat-card">
+        <div class="quick-stat-icon emerald">
+          <i class="fa-solid fa-gauge-high"></i>
+        </div>
+        <div class="quick-stat-info">
+          <span class="quick-stat-value">20.0 TPS</span>
+          <span class="quick-stat-label">Fabric Optimization</span>
+        </div>
+      </div>
+
+      <div class="quick-stat-card">
+        <div class="quick-stat-icon">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <div class="quick-stat-info">
+          <span class="quick-stat-value">3D Voice Chat</span>
+          <span class="quick-stat-label">Proximity Audio Mod</span>
+        </div>
+      </div>
+
+      <div class="quick-stat-card">
+        <div class="quick-stat-icon cyan">
+          <i class="fa-solid fa-shield-cat"></i>
+        </div>
+        <div class="quick-stat-info">
+          <span class="quick-stat-value">100% Protected</span>
+          <span class="quick-stat-label">CoreProtect & Rollbacks</span>
+        </div>
+      </div>
+
+      <div class="quick-stat-card">
+        <div class="quick-stat-icon gold">
+          <i class="fa-solid fa-gem"></i>
+        </div>
+        <div class="quick-stat-info">
+          <span class="quick-stat-value">Diamond Standard</span>
+          <span class="quick-stat-label">Player-Driven Economy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Server Features Section
+       ========================================================================== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Pure Vanilla+ Survival</span>
+        <h2 class="section-title">Built for Builders, Redstoners & Adventurers</h2>
+        <p class="section-description">
+          NezoSMP delivers an uncompromised survival experience. We eliminate game-breaking pay-to-win kits while enhancing social immersion and client-side performance.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon-wrapper">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <span class="feature-badge">Performance</span>
+          </div>
+          <h3 class="feature-title">High-Performance Fabric 26.3</h3>
+          <p class="feature-desc">
+            Equipped with Lithium, FerriteCore, and custom thread scheduling to preserve vanilla mob mechanics, complex redstone clocks, and massive mob farms without stutter.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon-wrapper" style="color: var(--emerald-primary); background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3);">
+              <i class="fa-solid fa-microphone-lines"></i>
+            </div>
+            <span class="feature-badge">Immersion</span>
+          </div>
+          <h3 class="feature-title">3D Proximity Voice Chat</h3>
+          <p class="feature-desc">
+            Interact naturally with nearby players via Simple Voice Chat. Experience realistic cave reverb, directional whispers, and group radio frequencies.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon-wrapper" style="color: var(--diamond-cyan); background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3);">
+              <i class="fa-solid fa-shield-heart"></i>
+            </div>
+            <span class="feature-badge">Security</span>
+          </div>
+          <h3 class="feature-title">Grief-Free & CoreProtect</h3>
+          <p class="feature-desc">
+            Enjoy peace of mind while constructing megabases. Every chest transaction, block placement, and explosion is logged and instantly reversible by staff.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon-wrapper" style="color: var(--gold-accent); background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3);">
+              <i class="fa-solid fa-store"></i>
+            </div>
+            <span class="feature-badge">Economy</span>
+          </div>
+          <h3 class="feature-title">Hermitcraft Shopping District</h3>
+          <p class="feature-desc">
+            No virtual `/sell` commands or spawned currency. Establish your own themed shop at the spawn market, trade rare enchantments, and trade diamonds with fellow players.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon-wrapper">
+              <i class="fa-solid fa-map-location"></i>
+            </div>
+            <span class="feature-badge">Real-Time</span>
+          </div>
+          <h3 class="feature-title">Real-Time 3D Live Web Map</h3>
+          <p class="feature-desc">
+            Explore world biomes, locate Nether portals, trace railways, and check who is online in real-time right from your browser on any phone or desktop.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon-wrapper" style="color: #ec4899; background: rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.3);">
+              <i class="fa-solid fa-dungeon"></i>
+            </div>
+            <span class="feature-badge">Adventures</span>
+          </div>
+          <h3 class="feature-title">Trial Chambers & Server Lore</h3>
+          <p class="feature-desc">
+            Conquer newly generated 26.3 trial chambers, collect heavy cores, craft maces, and take part in seasonal Dragon respawn tournaments and community build battles.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Interactive Live Map Showcase
+       ========================================================================== -->
+  <section class="section" id="live-map">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag emerald">Interactive BlueMap / Dynmap</span>
+        <h2 class="section-title">Explore the World in Real-Time 3D</h2>
+        <p class="section-description">
+          Inspect rendered terrain, landmarks, and live player locations across the Overworld, Nether, and The End directly from the web.
+        </p>
+      </div>
+
+      <div class="map-showcase-box">
+        <div class="map-control-bar">
+          <div class="map-status-pill">
+            <i class="fa-solid fa-satellite-dish" style="color: var(--emerald-primary);"></i>
+            <span>NezoSMP Live Cartography</span>
+          </div>
+
+          <!-- Dimension Switcher -->
+          <div class="map-dimension-tabs">
+            <button class="map-tab-btn active" data-dimension="overworld">
+              <i class="fa-solid fa-tree"></i> Overworld
+            </button>
+            <button class="map-tab-btn" data-dimension="nether">
+              <i class="fa-solid fa-fire"></i> Nether
+            </button>
+            <button class="map-tab-btn" data-dimension="end">
+              <i class="fa-solid fa-moon"></i> The End
+            </button>
+          </div>
+
+          <a href="https://map.nezosmp.net" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Fullscreen Map
+          </a>
+        </div>
+
+        <div class="map-preview-container">
+          <img src="assets/images/hero.jpg" alt="NezoSMP World Map Preview" class="map-preview-img" id="map-preview-img">
+          
+          <div class="map-overlay-info">
+            <div style="display: flex; flex-direction: column;">
+              <span style="font-size: 0.82rem; color: var(--text-dim); text-transform: uppercase; font-family: var(--font-mono); font-weight: 700;">Prominent Landmarks</span>
+              <div class="map-poi-chips" id="map-poi-chips">
+                <div class="poi-chip"><i class="fa-solid fa-crown"></i> <span><strong>Spawn Citadel</strong> (X: 0, Z: 0)</span></div>
+                <div class="poi-chip"><i class="fa-solid fa-store"></i> <span><strong>Shopping District</strong> (X: 180, Z: -220)</span></div>
+                <div class="poi-chip"><i class="fa-solid fa-wheat-awn"></i> <span><strong>Community Farm Hub</strong> (X: -340, Z: 120)</span></div>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm" data-copy-ip>
+              <i class="fa-solid fa-compass"></i> Copy IP & Explore
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Fabric 26.3 Mods Section
+       ========================================================================== -->
+  <section class="section" id="mods">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Recommended Client Setup</span>
+        <h2 class="section-title">Fabric 26.3 Mods & Optimization</h2>
+        <p class="section-description">
+          While vanilla Minecraft clients can connect directly, these Fabric client mods provide dramatically higher FPS, shaders compatibility, and 3D positional voice chat.
+        </p>
+      </div>
+
+      <div class="mods-grid">
+        <!-- Mod 1 -->
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <h3 class="mod-title">Simple Voice Chat</h3>
+            <span class="mod-category-pill">Voice Chat</span>
+          </div>
+          <p class="mod-desc">
+            Adds proximity voice chat to Minecraft. Listen to other players in 3D audio as you move closer, with volume roll-off, occlusion through walls, and push-to-talk.
+          </p>
+          <div class="mod-card-footer">
+            <span class="mod-req-status"><i class="fa-solid fa-check"></i> Highly Recommended</span>
+            <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Mod 2 -->
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <h3 class="mod-title">Sodium (Embeddium)</h3>
+            <span class="mod-category-pill">Performance</span>
+          </div>
+          <p class="mod-desc">
+            A free and open-source rendering engine replacement for the Minecraft client that greatly improves framerates, reduces micro-stutter, and fixes graphical issues.
+          </p>
+          <div class="mod-card-footer">
+            <span class="mod-req-status"><i class="fa-solid fa-check"></i> Recommended</span>
+            <a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Mod 3 -->
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <h3 class="mod-title">Iris Shaders</h3>
+            <span class="mod-category-pill">Visuals</span>
+          </div>
+          <p class="mod-desc">
+            Modern shaderpack compatibility for Fabric 26.3 that runs at incredible framerates alongside Sodium. Enjoy vibrant sunrises, realistic water, and soft shadows.
+          </p>
+          <div class="mod-card-footer">
+            <span class="mod-req-status" style="color: var(--diamond-cyan);"><i class="fa-solid fa-sparkles"></i> Optional Visuals</span>
+            <a href="https://modrinth.com/mod/iris" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Mod 4 -->
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <h3 class="mod-title">Lithium & FerriteCore</h3>
+            <span class="mod-category-pill">Memory & Physics</span>
+          </div>
+          <p class="mod-desc">
+            Optimizes client-side chunk loading, entity physics, and memory allocation. Greatly reduces RAM usage and prevents freezing while traveling quickly through worlds.
+          </p>
+          <div class="mod-card-footer">
+            <span class="mod-req-status"><i class="fa-solid fa-check"></i> Recommended</span>
+            <a href="https://modrinth.com/mod/lithium" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Mod 5 -->
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <h3 class="mod-title">AppleSkin</h3>
+            <span class="mod-category-pill">Quality of Life</span>
+          </div>
+          <p class="mod-desc">
+            Shows food saturation values, visual health recovery previews, and exhaustion levels when holding or hovering over food items in your inventory.
+          </p>
+          <div class="mod-card-footer">
+            <span class="mod-req-status" style="color: var(--text-muted);"><i class="fa-solid fa-circle-info"></i> Optional</span>
+            <a href="https://modrinth.com/mod/appleskin" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Mod 6 -->
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <h3 class="mod-title">Xaero's Minimap (Fair-Play)</h3>
+            <span class="mod-category-pill">Navigation</span>
+          </div>
+          <p class="mod-desc">
+            Client-side mini-map showing surrounding terrain and waypoints. Conforms to NezoSMP fair-play rules by disabling underground cave-view and entity radar.
+          </p>
+          <div class="mod-card-footer">
+            <span class="mod-req-status" style="color: var(--text-muted);"><i class="fa-solid fa-circle-info"></i> Fair-Play Allowed</span>
+            <a href="https://modrinth.com/mod/xaeros-minimap" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Get Mod <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- One-click Modpack Banner -->
+      <div style="margin-top: 2.5rem; text-align: center;">
+        <a href="https://modrinth.com/modpack/nezosmp" target="_blank" rel="noopener noreferrer" class="btn btn-amethyst btn-lg shimmer">
+          <i class="fa-solid fa-box-open"></i>
+          <span>Download NezoSMP 26.3 Official Modpack (.mrpack)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       How to Join Section (Tabbed Launcher Guides)
+       ========================================================================== -->
+  <section class="section" id="how-to-join">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag emerald">Quick Connection Guide</span>
+        <h2 class="section-title">How to Join NezoSMP</h2>
+        <p class="section-description">
+          Choose your favorite Minecraft launcher below for simple step-by-step connection instructions.
+        </p>
+      </div>
+
+      <div class="join-guide-wrapper">
+        <!-- Launcher Selector Tabs -->
+        <div class="launcher-tabs">
+          <button class="launcher-tab-btn active" data-target="panel-modrinth">
+            <i class="fa-solid fa-download"></i> Modrinth / Prism Launcher
+          </button>
+          <button class="launcher-tab-btn" data-target="panel-curseforge">
+            <i class="fa-solid fa-fire-flame-curved"></i> CurseForge App
+          </button>
+          <button class="launcher-tab-btn" data-target="panel-vanilla">
+            <i class="fa-solid fa-cube"></i> Official Minecraft Launcher
+          </button>
+          <button class="launcher-tab-btn" data-target="panel-bedrock">
+            <i class="fa-solid fa-mobile-screen"></i> Bedrock (Mobile / Console)
+          </button>
+        </div>
+
+        <!-- Panel 1: Modrinth / Prism -->
+        <div class="launcher-content-panel active" id="panel-modrinth">
+          <div class="steps-list">
+            <div class="step-card">
+              <span class="step-number">01</span>
+              <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <h4 class="step-title">Search Modpack</h4>
+              <p class="step-desc">Open Modrinth or Prism Launcher, click <strong>Create Instance</strong> or <strong>Add Modpack</strong>, and search for <strong>NezoSMP</strong>.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">02</span>
+              <div class="step-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+              <h4 class="step-title">1-Click Install</h4>
+              <p class="step-desc">Click Install. The launcher will automatically configure Fabric 26.3, Sodium, and Simple Voice Chat for you.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">03</span>
+              <div class="step-icon"><i class="fa-solid fa-gamepad"></i></div>
+              <h4 class="step-title">Launch & Connect</h4>
+              <p class="step-desc">Launch the game, open Multiplayer, and join <strong>play.nezosmp.net</strong>. You're ready to explore!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: CurseForge -->
+        <div class="launcher-content-panel" id="panel-curseforge">
+          <div class="steps-list">
+            <div class="step-card">
+              <span class="step-number">01</span>
+              <div class="step-icon"><i class="fa-solid fa-plus"></i></div>
+              <h4 class="step-title">Create Profile</h4>
+              <p class="step-desc">In the CurseForge App, click <strong>Create Custom Profile</strong>. Select Minecraft Version <strong>26.3</strong> and Modloader <strong>Fabric</strong>.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">02</span>
+              <div class="step-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+              <h4 class="step-title">Add Voice Chat & Sodium</h4>
+              <p class="step-desc">Click "Add More Content" and install <strong>Simple Voice Chat</strong> and <strong>Sodium</strong>.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">03</span>
+              <div class="step-icon"><i class="fa-solid fa-plug"></i></div>
+              <h4 class="step-title">Connect to Server</h4>
+              <p class="step-desc">Hit Play, go to Multiplayer, add server with address <strong>play.nezosmp.net</strong> and join!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Vanilla Launcher -->
+        <div class="launcher-content-panel" id="panel-vanilla">
+          <div class="steps-list">
+            <div class="step-card">
+              <span class="step-number">01</span>
+              <div class="step-icon"><i class="fa-solid fa-download"></i></div>
+              <h4 class="step-title">Install Fabric Loader</h4>
+              <p class="step-desc">Visit <a href="https://fabricmc.net" target="_blank" style="color: var(--amethyst-primary); text-decoration: underline;">fabricmc.net</a> and download the Fabric installer for version 26.3.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">02</span>
+              <div class="step-icon"><i class="fa-solid fa-folder-open"></i></div>
+              <h4 class="step-title">Place Mods in .minecraft</h4>
+              <p class="step-desc">Drop Fabric API and Simple Voice Chat into your <code>.minecraft/mods</code> folder.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">03</span>
+              <div class="step-icon"><i class="fa-solid fa-network-wired"></i></div>
+              <h4 class="step-title">Direct Connect</h4>
+              <p class="step-desc">Open the Fabric profile in the official launcher, select Multiplayer, and join <strong>play.nezosmp.net</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Bedrock Edition -->
+        <div class="launcher-content-panel" id="panel-bedrock">
+          <div class="steps-list">
+            <div class="step-card">
+              <span class="step-number">01</span>
+              <div class="step-icon"><i class="fa-solid fa-server"></i></div>
+              <h4 class="step-title">Add External Server</h4>
+              <p class="step-desc">In Bedrock Edition (Windows 10/11, Mobile, iOS, Android), go to the <strong>Servers</strong> tab and click <strong>Add Server</strong>.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">02</span>
+              <div class="step-icon"><i class="fa-solid fa-keyboard"></i></div>
+              <h4 class="step-title">Server Address & Port</h4>
+              <p class="step-desc">Server Name: <strong>NezoSMP</strong><br>Server Address: <strong>bedrock.nezosmp.net</strong><br>Port: <strong>19132</strong> (Default).</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">03</span>
+              <div class="step-icon"><i class="fa-solid fa-user-check"></i></div>
+              <h4 class="step-title">Cross-Play Ready</h4>
+              <p class="step-desc">Click Save and Join! You will cross-play seamlessly with Java Edition players thanks to GeyserMC.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Join Action -->
+        <div style="margin-top: 2rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn btn-primary shimmer" data-copy-ip>
+            <i class="fa-solid fa-copy"></i>
+            <span>Copy play.nezosmp.net</span>
+          </button>
+          <a href="https://discord.gg/nezosmp" target="_blank" rel="noopener noreferrer" class="btn btn-discord">
+            <i class="fa-brands fa-discord"></i>
+            <span>Need Help? Ask in Discord</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Server Rules Section
+       ========================================================================== -->
+  <section class="section" id="rules">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Community Standards</span>
+        <h2 class="section-title">Rules & Guidelines</h2>
+        <p class="section-description">
+          We prioritize a drama-free, respectful, and friendly atmosphere for all players. Please review our server code of conduct below.
+        </p>
+      </div>
+
+      <!-- Real-time Rules Search Bar -->
+      <div class="rules-filter-bar">
+        <i class="fa-solid fa-magnifying-glass rules-search-icon"></i>
+        <input type="text" id="rules-search-input" class="rules-search-input" placeholder="Search rules (e.g. griefing, mods, pvp, farms)...">
+      </div>
+
+      <!-- Rules Accordion -->
+      <div class="rules-accordion" id="rules-accordion-list">
+        <!-- Rule 1 -->
+        <div class="rule-item active">
+          <button class="rule-header">
+            <div class="rule-title-group">
+              <span class="rule-num">01</span>
+              <span class="rule-title">No Griefing, Stealing, or Unauthorized Raiding</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            Respect other players' builds, chests, storage systems, and animal farms. Even unlocked or wilderness chests are strictly protected. Every block interaction is permanently logged with CoreProtect, allowing staff to roll back damage in seconds.
+          </div>
+        </div>
+
+        <!-- Rule 2 -->
+        <div class="rule-item">
+          <button class="rule-header">
+            <div class="rule-title-group">
+              <span class="rule-num">02</span>
+              <span class="rule-title">Fair Play & Permitted Client Mods</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            Only quality-of-life and performance mods (Sodium, Iris Shaders, Simple Voice Chat, AppleSkin, Minimap without cave-view) are permitted. X-Ray texture packs, hacked clients, auto-clickers, baritone pathfinders, and movement cheats will trigger instant automated bans.
+          </div>
+        </div>
+
+        <!-- Rule 3 -->
+        <div class="rule-item">
+          <button class="rule-header">
+            <div class="rule-title-group">
+              <span class="rule-num">03</span>
+              <span class="rule-title">Welcoming & Respectful Community</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            Harassment, hate speech, discrimination, unsolicited advertisements, or excessive toxicity are strictly forbidden across both in-game chat and our Discord server. Keep the vibe constructive and supportive.
+          </div>
+        </div>
+
+        <!-- Rule 4 -->
+        <div class="rule-item">
+          <button class="rule-header">
+            <div class="rule-title-group">
+              <span class="rule-num">04</span>
+              <span class="rule-title">PvP Rules & Consent</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            PvP is mutually consensual. Both players must agree before initiating combat unless inside designated PvP arenas or during organized community tournament events. Trap-killing inside Nether portals is strictly forbidden.
+          </div>
+        </div>
+
+        <!-- Rule 5 -->
+        <div class="rule-item">
+          <button class="rule-header">
+            <div class="rule-title-group">
+              <span class="rule-num">05</span>
+              <span class="rule-title">Server-Friendly Redstone & Farms</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            Large mob grinders, sorting facilities, and flying machines must feature an easily accessible manual on/off shutoff switch. Never leave high-frequency redstone clocks running while unattended or offline.
+          </div>
+        </div>
+
+        <!-- Rule 6 -->
+        <div class="rule-item">
+          <button class="rule-header">
+            <div class="rule-title-group">
+              <span class="rule-num">06</span>
+              <span class="rule-title">Land Claiming & Builder Etiquette</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            Maintain a courteous distance of at least 150 blocks from other players' established settlements unless you have explicitly coordinated a shared village or town. Avoid leaving floating trees or unfinished pillar towers.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Staff Team Showcase
+       ========================================================================== -->
+  <section class="section" id="staff">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag emerald">Our Leadership</span>
+        <h2 class="section-title">Meet the NezoSMP Team</h2>
+        <p class="section-description">
+          Dedicated administrators, builders, and community moderators keeping the server secure, balanced, and fun.
+        </p>
+      </div>
+
+      <div class="staff-grid">
+        <!-- Staff 1 -->
+        <div class="staff-card">
+          <div class="staff-avatar-wrapper">
+            <img src="https://mc-heads.net/avatar/MHF_Steve/100" alt="Nezon" class="staff-avatar">
+            <span class="staff-badge owner">Owner</span>
+          </div>
+          <h3 class="staff-name">Nezon</h3>
+          <span class="staff-role">Server Owner & Lead Dev</span>
+          <p class="staff-quote">"Crafting a smooth, cozy, and lag-free Fabric SMP experience for our community."</p>
+        </div>
+
+        <!-- Staff 2 -->
+        <div class="staff-card">
+          <div class="staff-avatar-wrapper">
+            <img src="https://mc-heads.net/avatar/MHF_Alex/100" alt="Astraea" class="staff-avatar">
+            <span class="staff-badge admin">Admin</span>
+          </div>
+          <h3 class="staff-name">Astraea</h3>
+          <span class="staff-role">Head Administrator</span>
+          <p class="staff-quote">"Keeping the economy balanced and ensuring our community stays friendly and fair."</p>
+        </div>
+
+        <!-- Staff 3 -->
+        <div class="staff-card">
+          <div class="staff-avatar-wrapper">
+            <img src="https://mc-heads.net/avatar/notch/100" alt="Kaelen" class="staff-avatar">
+            <span class="staff-badge community">Community</span>
+          </div>
+          <h3 class="staff-name">Kaelen</h3>
+          <span class="staff-role">Community Manager</span>
+          <p class="staff-quote">"Here in Discord and in-game to welcome newcomers and organize weekly events!"</p>
+        </div>
+
+        <!-- Staff 4 -->
+        <div class="staff-card">
+          <div class="staff-avatar-wrapper">
+            <img src="https://mc-heads.net/avatar/jeb_/100" alt="RiftWalker" class="staff-avatar">
+            <span class="staff-badge builder">Builder</span>
+          </div>
+          <h3 class="staff-name">RiftWalker</h3>
+          <span class="staff-role">Lead Architect</span>
+          <p class="staff-quote">"Designing our spawn realm, shopping boulevard, and custom trial arenas."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Gallery / World Showcase
+       ========================================================================== -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">World Showcase</span>
+        <h2 class="section-title">Life on NezoSMP</h2>
+        <p class="section-description">
+          A glimpse into the stunning settlements, ancient ruins, and community projects created by our players.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="assets/images/hero.jpg" alt="Amethyst Valley Spawn" class="gallery-img">
+          <div class="gallery-overlay">
+            <h4 class="gallery-title">Amethyst Valley Spawn</h4>
+            <span class="gallery-subtitle">The serene starter sanctuary with cherry blossoms and mountain spires</span>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="assets/images/community.jpg" alt="Orenkhein Marketplace Town" class="gallery-img">
+          <div class="gallery-overlay">
+            <h4 class="gallery-title">Orenkhein Marketplace Town</h4>
+            <span class="gallery-subtitle">The bustling player-run trading hub and communal windmill farms</span>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="assets/images/adventure.jpg" alt="Deep Dark Trial Expedition" class="gallery-img">
+          <div class="gallery-overlay">
+            <h4 class="gallery-title">Deep Trial Chamber Expedition</h4>
+            <span class="gallery-subtitle">Adventurers battling through newly discovered 26.3 copper dungeons</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Discord CTA Banner
+       ========================================================================== -->
+  <div class="container">
+    <div class="discord-cta-section">
+      <i class="fa-brands fa-discord discord-cta-icon"></i>
+      <h2 class="discord-cta-title">Join Our Discord Community</h2>
+      <p class="discord-cta-desc">
+        Connect with over 500+ active adventurers, participate in voice channels, share screenshots of your builds, trade in the market channels, and stay updated on world events.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://discord.gg/nezosmp" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-lg shimmer">
+          <i class="fa-brands fa-discord"></i>
+          <span>Join the Discord Server</span>
+        </a>
+        <button class="btn btn-secondary btn-lg" data-copy-ip>
+          <i class="fa-solid fa-copy"></i>
+          <span>Copy Server IP</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Frequently Asked Questions (FAQ)
+       ========================================================================== -->
+  <section class="section" id="faq" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag emerald">Got Questions?</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">
+          Everything you need to know about joining and playing on NezoSMP.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="rule-item faq-item">
+          <button class="rule-header faq-header">
+            <div class="rule-title-group">
+              <span class="rule-num"><i class="fa-solid fa-circle-question"></i></span>
+              <span class="rule-title">Is NezoSMP free to play and how do I get whitelisted?</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            Yes, NezoSMP is 100% free to play! We have a quick, automated verification in our Discord server to prevent spambots. Once you link your Minecraft IGN in Discord, you are instantly granted whitelist access.
+          </div>
+        </div>
+
+        <div class="rule-item faq-item">
+          <button class="rule-header faq-header">
+            <div class="rule-title-group">
+              <span class="rule-num"><i class="fa-solid fa-circle-question"></i></span>
+              <span class="rule-title">What version of Minecraft does NezoSMP run on?</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            The server runs natively on <strong>Fabric 26.3</strong>. We recommend installing the Fabric loader along with Simple Voice Chat and Sodium for the smoothest gameplay.
+          </div>
+        </div>
+
+        <div class="rule-item faq-item">
+          <button class="rule-header faq-header">
+            <div class="rule-title-group">
+              <span class="rule-num"><i class="fa-solid fa-circle-question"></i></span>
+              <span class="rule-title">Can Bedrock Edition (Console / Mobile / iPad) players join?</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            Yes! NezoSMP runs GeyserMC and Floodgate, allowing Bedrock players on iOS, Android, Nintendo Switch, PlayStation, Xbox, and Windows 10/11 to connect using address <code>bedrock.nezosmp.net</code> with default port <code>19132</code>.
+          </div>
+        </div>
+
+        <div class="rule-item faq-item">
+          <button class="rule-header faq-header">
+            <div class="rule-title-group">
+              <span class="rule-num"><i class="fa-solid fa-circle-question"></i></span>
+              <span class="rule-title">Is proximity voice chat mandatory?</span>
+            </div>
+            <i class="fa-solid fa-chevron-down rule-chevron"></i>
+          </button>
+          <div class="rule-body">
+            Voice chat is not mandatory to play—standard in-game text chat works as always! However, most players love Simple Voice Chat for spontaneous conversations while exploring and building.
+          </div>
+        </div>
+
+        <div class="rule-item faq-item">
+          <button class="rule-header faq-header">
+            <div class="rule-title-group">
+              <span class="rule-num"><i class="fa-solid fa-circle-question"></i></span>
+              <span class="rule-title">Will the world ever be reset or wiped?</span>
+            </div>
+            <div class="rule-body">
+              We preserve worlds for long-term survival longevity. World resets only occur with unanimous community voting during major game-altering updates, and world download archives are always provided to players.
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#hero" class="brand">
+            <img src="assets/images/logo.jpg" alt="NezoSMP Logo" class="brand-logo-img">
+            <div class="brand-text">
+              <span class="brand-name">NezoSMP</span>
+              <span class="brand-badge">Fabric 26.3</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            A premium Vanilla+ Fabric Minecraft SMP dedicated to high performance, cooperative survival, and friendly community gameplay.
+          </p>
+          <span class="cloudflare-badge">
+            <i class="fa-solid fa-cloud"></i> Deployed on Cloudflare Pages
+          </span>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Server</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#live-map">Live 3D Map</a></li>
+            <li><a href="#mods">Fabric Mods</a></li>
+            <li><a href="#gallery">Screenshots</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Player Guides</h4>
+          <ul class="footer-links">
+            <li><a href="#how-to-join">How to Join</a></li>
+            <li><a href="#rules">Rules & Conduct</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://modrinth.com/modpack/nezosmp" target="_blank">Download Modpack</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://discord.gg/nezosmp" target="_blank"><i class="fa-brands fa-discord"></i> Discord Server</a></li>
+            <li><a href="https://map.nezosmp.net" target="_blank"><i class="fa-solid fa-map"></i> Dynmap / BlueMap</a></li>
+            <li><a href="javascript:void(0)" data-copy-ip><i class="fa-solid fa-server"></i> play.nezosmp.net</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 NezoSMP. Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</span>
+        <span>Built with modern web standards • Hosted on Cloudflare Pages Edge</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Gallery -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close dialog">&times;</button>
+      <img src="" alt="Enlarged screenshot" class="lightbox-image" id="lightbox-image">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification for Copy IP -->
+  <div class="toast-container">
+    <div class="toast" id="copy-toast" role="status" aria-live="polite">
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="toast-message">Copied "play.nezosmp.net" to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- Configuration and Logic Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
